@@ -11,12 +11,19 @@
   }
 }
 
+.post-list-item::before {
+  content: '';
+  display: inline-block;
+  height: 4rem;
+  width: 4rem;
+}
+
 .posts-list-item-description {
   display: flex;
   align-items: center;
   font-size: 0.8em;
 
-  > .icon {
+  >.icon {
     margin-right: 0.4em;
   }
 }
