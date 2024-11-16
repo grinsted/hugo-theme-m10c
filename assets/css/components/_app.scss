@@ -1,51 +1,175 @@
-.app-header {
-  padding: 2.5em;
-  background: $darkest-color;
-  text-align: center;
-}
+    /* wide-display */
+    body {
+      margin: 0px;
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: 20rem auto;
+      grid-template-areas:
+        "header header"
+        "nav main";
+    }
 
-.app-header-avatar {
-  width: 15rem;
-  height: 15rem;
-  border-radius: 100%;
-  border: 0.5rem solid $primary-color;
-}
+    header {
+      grid-area: "header";
+      display: none;
+    }
 
-.app-container {
-  padding: 2.5rem;
-}
+    nav {
+      padding: min(2.5rem, 10vw);
+      position: sticky;
+      top: 0;
+      grid-area: "nav";
+      text-align: center;
+    }
 
-.app-header-social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
-  color: $lightest-color;
+    nav h1 {
+      color: $lightest-color;
+      display: block;
+      font-size: 2em;
+      margin: 0.67em 0;
+      font-weight: bold;
+    }
 
-  a:not(:last-child) {
-    margin-right: 0.4em;
-  }
-}
 
-.app-header-title {
-  color: $lightest-color;
-  display: block;
-  font-size: 2em;
-  margin: 0.67em 0;
-  font-weight: bold;
-}
+    nav menu {
+      list-style: none;
+      padding-inline-start: 0px;
+    }
 
-@media (min-width: 940px) {
-  .app-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20rem;
-    min-height: 100vh;
-  }
+    nav img {
+      width: min(80%, 14rem);
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 100%;
+      border: .5rem solid $primary-color;
+      display: block;
+    }
 
-  .app-container {
-    max-width: 65rem;
-    margin-left: 20rem;
-  }
-}
+    main {
+      grid-area: "main";
+      background: $dark-color;
+      padding: min(2.5rem, 1vw);
+    }
+
+    #burgermenu-state {
+      display: none;
+    }
+
+    #burgermenu {
+      display: none;
+      user-select: none;
+    }
+
+
+    @media (max-width: 50rem) {
+      body {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+          "header"
+          "nav"
+          "main";
+      }
+
+      header {
+        display: block;
+        padding: 0.3rem;
+      }
+
+      nav {
+        padding-top: 0;
+        padding-bottom: 0;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+        overflow: hidden;
+      }
+
+      nav a {
+        display: block;
+      }
+
+      nav img {
+        display: none;
+      }
+
+      #burgermenu {
+        width: auto;
+        text-align: right;
+        display: block;
+        font-size: 2.5rem;
+      }
+
+
+      #burgermenu-state:checked~nav {
+        max-height: 30rem;
+      }
+
+      /* Style the button when the checkbox is checked */
+      #burgermenu-state:checked~* #burgermenu {
+        opacity: 0.3;
+      }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+    .xxxxapp-header {
+      padding: 2.5em;
+      background: $darkest-color;
+      text-align: center;
+    }
+
+    .xxxxapp-header-avatar {
+      width: 15rem;
+      height: 15rem;
+      border-radius: 100%;
+      border: 0.5rem solid $primary-color;
+    }
+
+    .xxxxxapp-container {
+      padding: 2.5rem;
+    }
+
+    .app-header-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      color: $lightest-color;
+
+      a:not(:last-child) {
+        margin-right: 0.4em;
+      }
+    }
+
+    .xxxxxxxxxapp-header-title {
+      color: $lightest-color;
+      display: block;
+      font-size: 2em;
+      margin: 0.67em 0;
+      font-weight: bold;
+    }
+
+    @media (min-width: 940px) {
+      .xxxxxxapp-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20rem;
+        min-height: 100vh;
+      }
+
+      .xxxxxxxxapp-container {
+        max-width: 65rem;
+        margin-left: 20rem;
+      }
+    }
