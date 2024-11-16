@@ -1,33 +1,27 @@
-.posts-list {
-  padding: 0;
-}
+    /* arcicle list */
 
-.posts-list-item {
-  list-style: none;
-  padding: 0.4em 0;
+    ul.post-list {
+      list-style: none;
+      padding-inline-start: 0px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+    }
 
-  &:not(:last-child) {
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-  }
-}
+    .post-list li {
+      border-radius: 0.5rem;
+      box-shadow: 0 1rem 2rem -0rem rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
 
-.post-list-item::before {
-  content: '';
-  display: inline-block;
-  height: 4rem;
-  width: 4rem;
-}
+    .post-list li img {
+      aspect-ratio: 16/9;
+      max-height: 30vh;
+      width: 100%;
+      object-fit: cover;
+    }
 
-.posts-list-item-description {
-  display: flex;
-  align-items: center;
-  font-size: 0.8em;
-
-  >.icon {
-    margin-right: 0.4em;
-  }
-}
-
-.posts-list-item-separator {
-  margin: 0 0.4em;
-}
+    .post-list li article {
+      padding: 0.5rem;
+    }
