@@ -2,12 +2,14 @@
 
     ul.post-list {
       list-style: none;
+      line-height: 1.2;
       padding-inline-start: 0px;
       margin: 0 auto;
       display: grid;
       gap: 2rem;
       grid-template-columns: repeat(auto-fit, minmax(MIN(16rem, 100%), 1fr));
     }
+
 
     .post-list li {
       border-radius: 0.5rem;

@@ -1,4 +1,8 @@
     /* wide-display */
+    html {
+      background-color: $darkest-color;
+    }
+
     body {
       margin: 0px;
       display: grid;
