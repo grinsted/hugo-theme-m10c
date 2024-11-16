@@ -1,6 +1,7 @@
     /* wide-display */
     html {
       background-color: $darkest-color;
+      font-size: 120%;
     }
 
     body {
@@ -13,12 +14,12 @@
         "nav main";
     }
 
-    header {
+    body>header {
       grid-area: "header";
       display: none;
     }
 
-    nav {
+    body>nav {
       padding: MIN(2.5rem, 10vw);
       position: sticky;
       top: 0;
@@ -26,7 +27,7 @@
       text-align: center;
     }
 
-    nav h1 {
+    body>nav h1 {
       color: $lightest-color;
       display: block;
       font-size: 2em;
@@ -35,12 +36,12 @@
     }
 
 
-    nav menu {
+    body>nav menu {
       list-style: none;
       padding-inline-start: 0px;
     }
 
-    nav img {
+    body>nav img {
       width: MIN(80%, 14rem);
       height: auto;
       margin-left: auto;
@@ -50,7 +51,7 @@
       display: block;
     }
 
-    main {
+    body>main {
       grid-area: "main";
       background: $dark-color;
       padding: MIN(2.5rem, 1vw); //CAPS is a scss workaround "incompatible units" error.
@@ -76,12 +77,12 @@
           "main";
       }
 
-      header {
+      body>header {
         display: block;
         padding: 0.3rem;
       }
 
-      nav {
+      body>nav {
         padding-top: 0;
         padding-bottom: 0;
         max-height: 0;
@@ -89,11 +90,11 @@
         overflow: hidden;
       }
 
-      nav a {
+      body>nav a {
         display: block;
       }
 
-      nav img {
+      body>nav img {
         display: none;
       }
 
@@ -101,6 +102,7 @@
         width: auto;
         text-align: right;
         display: block;
+        padding-right: 0.5rem;
         font-size: 2.5rem;
       }
 
@@ -113,35 +115,8 @@
       #burgermenu-state:checked~* #burgermenu {
         opacity: 0.3;
       }
-
-
     }
 
-
-
-
-
-
-
-
-
-
-    .xxxxapp-header {
-      padding: 2.5em;
-      background: $darkest-color;
-      text-align: center;
-    }
-
-    .xxxxapp-header-avatar {
-      width: 15rem;
-      height: 15rem;
-      border-radius: 100%;
-      border: 0.5rem solid $primary-color;
-    }
-
-    .xxxxxapp-container {
-      padding: 2.5rem;
-    }
 
     .app-header-social {
       display: flex;
@@ -152,28 +127,5 @@
 
       a:not(:last-child) {
         margin-right: 0.4em;
-      }
-    }
-
-    .xxxxxxxxxapp-header-title {
-      color: $lightest-color;
-      display: block;
-      font-size: 2em;
-      margin: 0.67em 0;
-      font-weight: bold;
-    }
-
-    @media (min-width: 940px) {
-      .xxxxxxapp-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 20rem;
-        min-height: 100vh;
-      }
-
-      .xxxxxxxxapp-container {
-        max-width: 65rem;
-        margin-left: 20rem;
       }
     }
