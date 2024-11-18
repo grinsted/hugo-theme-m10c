@@ -8,7 +8,6 @@
     <article>
       <img src="{{ .Params.banner | absURL }}" ;>
       <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-      <br>
       <div>
         {{ if .Params.Summary }}
         {{ .Params.Summary | markdownify }}
