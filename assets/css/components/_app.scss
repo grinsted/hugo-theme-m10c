@@ -55,6 +55,12 @@
       padding: MIN(2.5rem, 1vw); //CAPS is a scss workaround "incompatible units" error.
     }
 
+    cite {
+      font-size: .9em;
+      font-style: italic;
+      margin: MIN(2rem, 1vw)
+    }
+
     #burgermenu-state {
       display: none;
     }

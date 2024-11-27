@@ -27,8 +27,15 @@
     .post-list h1 {
       margin-block-start: .2rem;
       margin-block-end: .2rem;
+      font-size: 1.2rem;
     }
 
     .post-list li article {
-      padding: 0.5rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .post-list li article p {
+      margin-top: 0.2rem;
+      margin-bottom: 0.2rem;
     }
