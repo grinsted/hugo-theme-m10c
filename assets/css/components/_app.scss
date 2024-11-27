@@ -55,6 +55,10 @@
       padding: MIN(2.5rem, 1vw); //CAPS is a scss workaround "incompatible units" error.
     }
 
+    body>main iframe {
+      max-height: 70vh;
+    }
+
     cite {
       font-size: .9em;
       font-style: italic;
