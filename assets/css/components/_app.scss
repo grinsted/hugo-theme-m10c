@@ -65,8 +65,14 @@
       aspect-ratio: 16 / 9;
     }
 
+    body>main figure {
+      margin-inline: 5vw;
+    }
+
     body>main figcaption {
       font-style: italic;
+      text-align: justify;
+      line-height: 1.2;
     }
 
     body>main figcaption p {
