@@ -65,6 +65,14 @@
       aspect-ratio: 16 / 9;
     }
 
+    body>main figcaption {
+      font-style: italic;
+    }
+
+    body>main figcaption p.firstpar {
+      margin-top: 0.1em;
+    }
+
     body>main img {
       margin: 0 auto;
       display: block;
