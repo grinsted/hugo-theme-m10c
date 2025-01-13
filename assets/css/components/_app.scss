@@ -1,7 +1,8 @@
     /* wide-display */
 
     body {
-      margin: 0px;
+      margin: auto;
+      max-width: 85rem;
       min-height: 100vh;
       display: grid;
       grid-template-rows: 0 auto;
