@@ -8,10 +8,11 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: auto;
   font-family: sans-serif;
   background: $darkest-color;
   color: $light-color;
+  max-width: 85rem;
 }
 
 h1,
