@@ -1,3 +1,4 @@
+$bg-color: {{ .Site.Params.style.darkestColor | default "#191C21" }};
 $darkest-color: {{ .Site.Params.style.darkestColor | default "#242930" }};
 $dark-color: {{ .Site.Params.style.darkColor | default "#353b43" }};
 $light-color: {{ .Site.Params.style.lightColor | default "#afbac4" }};

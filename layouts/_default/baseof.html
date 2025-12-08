@@ -3,7 +3,7 @@
 
 <head>
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} // {{ .Site.Title }}{{ end }}</title>
-  <link rel="shortcut icon" href="{{ .Site.Params.favicon | default " /favicon.ico" }}" />
+  <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "/favicon.ico" }}" />
   {{ if .Params.canonicalUrl }}
   <link rel="canonical" href="{{ .Params.canonicalUrl }}">
   {{ else }}
