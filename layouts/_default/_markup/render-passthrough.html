@@ -1,6 +1,8 @@
 {{- /* Render LaTeX server-side with KaTeX. See https://gohugo.io/content-management/mathematics/ */ -}}
 {{- $opts := dict "output" "htmlAndMathml" "displayMode" (eq .Type "block") }}
-{{- with try (transform.ToMath .Inner $opts) }}
+{{- /* Non-breaking spaces (common in posts imported from WordPress) are rejected by KaTeX strict mode. */ -}}
+{{- $inner := replace .Inner " " " " }}
+{{- with try (transform.ToMath $inner $opts) }}
   {{- with .Err }}
     {{- errorf "Unable to render mathematical markup to HTML using the transform.ToMath function. The KaTeX display engine threw the following error: %s: see %s." . $.Position }}
   {{- else }}
