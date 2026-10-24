@@ -63,3 +63,11 @@ theme = "hugo-theme-m10c"
   #   lightColor = "#d6d6d6"
   #   lightestColor = "#d3d3d3"
   #   primaryColor = "#ffffff"
+
+# Math: enable the Goldmark passthrough extension so LaTeX is left untouched
+# by Markdown and rendered by KaTeX at build time (see README).
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]

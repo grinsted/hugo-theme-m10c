@@ -28,7 +28,9 @@
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/opengraph.html" . }}
 
-  {{ if .Params.math }}{{ partial "katex.html" . }}{{ end }}
+  {{- /* Render content first so the passthrough hook can flag pages containing math */}}
+  {{- $noop := .WordCount }}
+  {{ if or .Params.math (.Store.Get "hasMath") }}{{ partial "katex.html" . }}{{ end }}
 
 </head>
 

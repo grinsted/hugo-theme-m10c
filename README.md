@@ -94,6 +94,28 @@ To override styles using scss, add a file called `_extra.scss` to `[path]/assets
 
 **Note:** Hugo releases come in two versions, `hugo` and `hugo_extended`. You need `hugo_extended` to automatically compile your scss.
 
+### Math
+
+LaTeX is rendered to HTML with KaTeX at build time, following
+[Hugo's mathematics guide](https://gohugo.io/content-management/mathematics/).
+No JavaScript is shipped; the KaTeX stylesheet and fonts are served from the
+theme's `static/katex/` and only included on pages that contain math.
+
+Hugo does not let themes set `markup` options, so enable the passthrough
+extension in your site config:
+
+```toml
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)'], ['$', '$']]
+```
+
+Then write `$...$` or `\(...\)` for inline math and `$$...$$` or `\[...\]` for
+display math. Drop `['$', '$']` if you write literal dollar signs in prose.
+Setting `math: true` in front matter forces the stylesheet onto a page.
+
 ## License
 
 This theme is released under the [**MIT**](/LICENSE.md) License.
