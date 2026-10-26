@@ -2,7 +2,10 @@
   <article class="post">
     <header class="post-header">
       {{ if and (isset .Params "banner") (not (eq .Params.banner "")) }}
-      <img src="{{ .Params.banner | absURL }}" class="post-banner">
+      <img src="{{ .Params.banner | absURL }}" class="post-banner" alt="{{ .Params.banner_alt | default "" }}"{{ with .Params.banner_credit }} title="{{ . | markdownify | plainify }}"{{ end }}>
+      {{ with .Params.banner_credit }}
+      <div class="post-banner-credit">{{ . | markdownify }}</div>
+      {{ end }}
       {{ end }}
       <h1 class ="post-title">{{ .Title }}</h1>
       {{- if ne .Type "page" }}

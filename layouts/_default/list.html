@@ -5,7 +5,7 @@
 <ul class="post-list">
   {{ range where .Paginator.Pages "Type" "!=" "page" }}
   <li>
-    <img src="{{ .Params.banner | absURL }}" ;>
+    <img src="{{ .Params.banner | absURL }}" alt="{{ .Params.banner_alt | default "" }}"{{ with .Params.banner_credit }} title="{{ . | markdownify | plainify }}"{{ end }}>
     <article>
       <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
       <p>
