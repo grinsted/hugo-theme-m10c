@@ -94,6 +94,30 @@ To override styles using scss, add a file called `_extra.scss` to `[path]/assets
 
 **Note:** Hugo releases come in two versions, `hugo` and `hugo_extended`. You need `hugo_extended` to automatically compile your scss.
 
+### Banners and images
+
+Posts can have a banner image, shown at the top of the post and in post lists,
+set in front matter:
+
+- `banner`: Path or URL of the banner image
+- `banner_alt`: Alt text for the banner
+- `banner_credit`: Credit shown below the banner. Markdown allowed
+
+Images can be kept next to the post and referenced with a relative path, in
+`banner`, in Markdown images and in the `figure` shortcode (`src` and `link`).
+This works both for page bundles (`index.md`) and for plain posts:
+
+```
+content/studentproject/2025/
+├── post.md               # banner: flying_quiree.jpg
+├── flying_quiree.jpg
+└── img/detail.jpg        # ![Detail](img/detail.jpg)
+```
+
+Relative paths are resolved against the folder of the content file, so `./`
+and `../` work too. Paths starting with `/` and full URLs are used as they are.
+Images in raw HTML `<img>` tags are not resolved.
+
 ### Math
 
 LaTeX is rendered to HTML with KaTeX at build time, following
