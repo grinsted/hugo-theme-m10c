@@ -1,0 +1,39 @@
+{{- /*
+  Resolve a relative path, as written in a page, to the URL of the content file it names.
+  Usage: partial "resolve_url.html" (dict "page" .Page "src" "flying_quiree.jpg")
+
+  The path is looked up, in order:
+  1. as a resource of the page itself (page bundle: index.md next to the file)
+  2. relative to the folder of the page's file (e.g. post.md next to the file),
+     where Hugo exposes the file as a resource of the enclosing section
+
+  Returns "" for absolute URLs, site paths ("/...") and paths that match no
+  content file, so the caller can choose a fallback.
+*/ -}}
+{{- $url := "" -}}
+{{- $page := .page -}}
+{{- $u := urls.Parse .src -}}
+{{- if and $u.Path (not $u.IsAbs) (not (strings.HasPrefix $u.Path "/")) -}}
+  {{- $rel := strings.TrimPrefix "./" $u.Path -}}
+  {{- with $page.Resources.Get $rel -}}
+    {{- $url = .RelPermalink -}}
+  {{- else -}}
+    {{- with $page.File -}}
+      {{- /* Section resources are named relative to the section folder, so the
+             correct one is the longest name that ends the full path. */ -}}
+      {{- $target := path.Join .Dir $rel -}}
+      {{- $best := "" -}}
+      {{- range $page.CurrentSection.Resources -}}
+        {{- if and (gt (len .Name) (len $best)) (or (eq $target .Name) (strings.HasSuffix $target (print "/" .Name))) -}}
+          {{- $best = .Name -}}
+          {{- $url = .RelPermalink -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $url -}}
+    {{- with $u.RawQuery }}{{ $url = printf "%s?%s" $url . }}{{ end -}}
+    {{- with $u.Fragment }}{{ $url = printf "%s#%s" $url . }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

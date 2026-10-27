@@ -1,0 +1,30 @@
+{{- /* Hugo's built-in figure shortcode, with src and link resolved against the folder of the content file. See partials/resolve_url.html */ -}}
+{{- $src := .Get "src" -}}
+{{- $src = partial "resolve_url.html" (dict "page" .Page "src" $src) | default $src -}}
+{{- $link := .Get "link" -}}
+{{- with $link }}{{ $link = partial "resolve_url.html" (dict "page" $.Page "src" .) | default . }}{{ end -}}
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{- with $link -}}
+    <a href="{{ . }}"{{ with $.Get "target" }} target="{{ . }}"{{ end }}{{ with $.Get "rel" }} rel="{{ . }}"{{ end }}>
+  {{- end -}}
+  <img src="{{ $src }}"
+    {{- if or (.Get "alt") (.Get "caption") }}
+    alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
+    {{- end -}}
+    {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+    {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+    {{- with .Get "loading" }} loading="{{ . }}"{{ end -}}
+  >
+  {{- if $link }}</a>{{ end -}}
+  {{- if or (.Get "title") (.Get "caption") (.Get "attr") -}}
+    <figcaption>
+      {{- with .Get "title" }}<h4>{{ . }}</h4>{{ end -}}
+      {{- if or (.Get "caption") (.Get "attr") -}}<p>
+        {{- .Get "caption" | markdownify -}}
+        {{- with .Get "attrlink" }}<a href="{{ . }}">{{ end -}}
+        {{- .Get "attr" | markdownify -}}
+        {{- if .Get "attrlink" }}</a>{{ end -}}
+      </p>{{- end -}}
+    </figcaption>
+  {{- end -}}
+</figure>

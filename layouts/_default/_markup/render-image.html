@@ -1,0 +1,7 @@
+{{- /* Resolve relative image paths against the folder of the content file. See partials/resolve_url.html */ -}}
+{{- $src := partial "resolve_url.html" (dict "page" .Page "src" .Destination) | default .Destination -}}
+<img src="{{ $src }}" alt="{{ .PlainText }}"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+  {{- range $k, $v := .Attributes }}{{ if $v }} {{ $k }}="{{ $v }}"{{ end }}{{ end -}}
+>
+{{- /* chomp trailing newline */ -}}
