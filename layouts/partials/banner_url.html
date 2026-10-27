@@ -1,0 +1,27 @@
+{{- /*
+  Resolve .Params.banner to a URL. A relative path is looked up, in order:
+  1. as a resource of the page itself (page bundle: index.md next to the image)
+  2. relative to the folder of the page's file (e.g. post.md next to the image),
+     where Hugo exposes the image as a resource of the enclosing section
+  Otherwise it is treated as a site path or full URL.
+*/ -}}
+{{- $url := "" -}}
+{{- with .Params.banner -}}
+  {{- $banner := strings.TrimPrefix "./" . -}}
+  {{- with $.Resources.GetMatch $banner -}}
+    {{- $url = .RelPermalink -}}
+  {{- else -}}
+    {{- with $.File -}}
+      {{- $target := path.Join .Dir $banner -}}
+      {{- range $.CurrentSection.Resources -}}
+        {{- if and (not $url) (or (eq $target .Name) (strings.HasSuffix $target (print "/" .Name))) -}}
+          {{- $url = .RelPermalink -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if not $url -}}
+      {{- $url = $banner | absURL -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}
